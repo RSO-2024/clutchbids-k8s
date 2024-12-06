@@ -9,13 +9,13 @@ spec:
     - matches:
         - path:
             type: PathPrefix
-            value: /api/p2p
+            value: /api/p2p/listings
       filters:
         - type: URLRewrite
           urlRewrite:
             path:
               type: ReplacePrefixMatch
-              replacePrefixMatch: /api
+              replacePrefixMatch: /api/listings
       backendRefs:
         - name: p2p-listings-service
           port: 80
