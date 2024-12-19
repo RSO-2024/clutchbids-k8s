@@ -1,0 +1,18 @@
+
+name: p2p-listings
+replicaCount: 3
+image:
+  repository: registry.digitalocean.com/clutchbids-registry/p2p-listings
+  tag: latest
+imagePullSecrets:
+  - name: clutchbids-registry
+service:
+  type: ClusterIP
+  port: 80
+resources:
+  requests:
+    memory: "128Mi"
+    cpu: "128m"
+  limits:
+    memory: "256Mi"
+    cpu: "256m"
