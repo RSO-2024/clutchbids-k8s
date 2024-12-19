@@ -1,0 +1,15 @@
+# TODO service monitoring for services
+#additionalMonitoring
+# {{- range .Values.monitoring.services }}
+# apiVersion: monitoring.coreos.com/v1
+# kind: ServiceMonitor
+# metadata:
+#   name: {{ .name }}
+# spec:
+#   selector:
+#     matchLabels:
+#       app: {{ .app }}
+#   endpoints:
+#   - port: {{ .port }}
+#     interval: {{ .interval }}
+# {{- end }}

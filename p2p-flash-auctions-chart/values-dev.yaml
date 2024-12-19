@@ -1,8 +1,8 @@
 
-name: p2p-listings
+name: p2p-price-auctions
 replicaCount: 1
 image:
-  repository: registry.digitalocean.com/clutchbids-registry/p2p-listings
+  repository: registry.digitalocean.com/clutchbids-registry/p2p-price-auctions
   tag: latest
 imagePullSecrets:
   name: clutchbids-registry
@@ -22,7 +22,7 @@ config:
   NODE_ENV: dev
 
 probes:
-  pathPrefix: /api/listings/health
+  pathPrefix: /api/price-auctions/health
   port: 3000
 
 # Startup probe configuration

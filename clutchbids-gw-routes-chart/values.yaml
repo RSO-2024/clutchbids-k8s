@@ -1,0 +1,25 @@
+gateway:
+  name: http-gw
+routes:
+  - matchPath: /api/p2p/listings
+    replacePath: /api/listings
+    backend:
+      serviceName: p2p-listings-service
+      servicePort: 80
+  - matchPath: /api/p2p/flash-auctions
+    replacePath: /api/flash-auctions
+    backend:
+      serviceName: p2p-flash-auctions-service
+      servicePort: 80
+  - matchPath: /api/p2p/price-auctions
+    replacePath: /api/price-auctions
+    backend:
+      serviceName: p2p-price-auctions-service
+      servicePort: 80
+
+monitoring:
+  services:
+    - name: p2p-listings-monitor
+      app: p2p-listings-service
+      port: "api"
+      interval: 60s
