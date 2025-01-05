@@ -16,6 +16,11 @@ routes:
     backend:
       serviceName: p2p-price-auctions-service
       servicePort: 80
+  - matchPath: /api/best-value/auctions
+    replacePath: /
+    backend:
+      serviceName: best-value-auctions-service
+      servicePort: 80
 
 monitoring:
   services:

@@ -4,9 +4,16 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: http-gw
+  annotations:
+    service.beta.kubernetes.io/do-loadbalancer-protocol: "https"
+    service.beta.kubernetes.io/do-loadbalancer-certificate-id: "rso-poklikaj-certificate"
+    service.beta.kubernetes.io/do-loadbalancer-disable-lets-encrypt-dns-records: "true"
 spec:
   gatewayClassName: envoy-gateway
   listeners:
   - name: http
     protocol: HTTP
+    port: 80
+  - name: https
+    protocol: HTTPS
     port: 80
