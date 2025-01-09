@@ -13,6 +13,8 @@ spec:
     metadata:
       labels:
         app: {{ .Values.name }}
+      annotations:
+        helm.sh/force-restart: "{{ .Release.Revision }}"
     spec:
       containers:
         - name: {{ .Values.name }}

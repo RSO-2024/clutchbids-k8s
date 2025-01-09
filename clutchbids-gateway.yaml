@@ -6,8 +6,9 @@ metadata:
   name: http-gw
   annotations:
     service.beta.kubernetes.io/do-loadbalancer-protocol: "https"
-    service.beta.kubernetes.io/do-loadbalancer-certificate-id: "rso-poklikaj-certificate"
-    service.beta.kubernetes.io/do-loadbalancer-disable-lets-encrypt-dns-records: "true"
+    service.beta.kubernetes.io/do-loadbalancer-certificate-name: "rso-certificate"
+    service.beta.kubernetes.io/do-loadbalancer-disable-lets-encrypt-dns-records: "false"
+    service.beta.kubernetes.io/do-loadbalancer-tls-ports: "443"
 spec:
   gatewayClassName: envoy-gateway
   listeners:
@@ -16,4 +17,4 @@ spec:
     port: 80
   - name: https
     protocol: HTTPS
-    port: 80
+    port: 443
