@@ -19,8 +19,6 @@ spec:
       containers:
         - name: {{ .Values.name }}
           image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
-          ports:
-            - containerPort: 3000
           resources:
             requests:
               memory: {{ .Values.resources.requests.memory }}
@@ -64,18 +62,5 @@ spec:
             successThreshold: {{ .Values.livenessProbe.successThreshold }}
             failureThreshold: {{ .Values.livenessProbe.failureThreshold }}
           {{- end }}
-          volumeMounts:
-            - name: config-volume
-              mountPath: /app/app-config
-              readOnly: true
-          envFrom:
-            - secretRef:
-                name: {{ .Values.name }}-secrets
-            - configMapRef:
-                name: {{ .Values.name }}-config
-      volumes:
-        - name: config-volume
-          configMap:
-            name: {{ .Values.name }}-config
       imagePullSecrets:
         - name: {{ .Values.imagePullSecrets.name }}
